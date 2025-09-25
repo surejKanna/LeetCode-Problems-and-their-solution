@@ -1,0 +1,15 @@
+char* longestCommonPrefix(char** strs, int strsSize) {
+    if (strsSize == 0) return "";
+    char* prefix = strs[0];
+    for(int i = 1 ; i < strsSize ; i++){
+        while(strstr(strs[i],prefix) != strs[i]){
+            prefix[strlen(prefix)-1] = '\0';
+        }
+    }
+    return prefix;
+}
+
+Approach
+
+we can first take the first string in the array and check it with the next string . After that, using the strstr(next_string,first_string) first string is checked wheather it is prefix substring of the next string - if it is a substring it just returns the pointer that points the first occurance ie first character where the substring matches with the next string ,this pointer is equal to the pointer that point the next string . If the substring does not matches then we can just remove the first string's last element till it matches to the next string using first_string[strlen(first_string)- 1 ] = '\0' (this will make the last element to null)
+,now the modified first_string is again compared with the secound , third and fourth ... string and then modified .Finally we will get the common prefix. thank you
